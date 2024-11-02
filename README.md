@@ -36,10 +36,10 @@
 - Streamlit: 사용자 인터페이스 구성
 
 ## 👥 팀원 정보
-| 이름     | 역할              | GitHub |  이메일 |
+| 이름     | 역할 | GitHub |  이메일 |
 | -------- | ----------------- | ----------------------------------- | ------ |
 | 김민준 | 팀장 | [246p](https://github.com/246p) | 0016kmj@u.sogang.ac.kr|
-| 김우영 | 팀원 | [drew0523](https://github.com/drew0523) |  drew0523@sogang.ac.kr |
-| 이경연 | 팀원 | [l0k0y](https://github.com/l0k0y) | joinme2000@sogang.ac.kr|
-| 임재훈 | 팀원 | [](https://github.com/) | jaehoonlim93@naver.com|
+| 김우영 | RAG | [drew0523](https://github.com/drew0523) |  drew0523@sogang.ac.kr |
+| 이경연 | Promporting, UI | [l0k0y](https://github.com/l0k0y) | joinme2000@sogang.ac.kr|
+
 ---

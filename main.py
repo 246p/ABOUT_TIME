@@ -7,10 +7,6 @@ def main():
 
     st.set_page_config(page_title="About Time", page_icon=":hourglass:", layout="wide")
 
-    ## API key check
-    if Upstage_API == "PLEASE_ENTER_YOUR_API_KEY" or Google_API == "PLEASE_ENTER_YOUR_API_KEY":
-        pass
-
     if "page" not in st.session_state:
         st.session_state.page = "input"
 
