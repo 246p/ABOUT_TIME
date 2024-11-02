@@ -48,8 +48,6 @@ def input_page():
         if uploaded_file is not None and special_info:
             # 세션 상태에 정보 저장
             name, chat_log= parse(uploaded_file)
-            print(name)
-            print(chat_log)
             st.session_state.persona=make_persona(chat_log, special_info)
             st.session_state.name = name
             st.session_state.uploaded_file = chat_log
