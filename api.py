@@ -1,5 +1,35 @@
 import streamlit as st
 import re
+from langchain_upstage import ChatUpstage
+from langchain.utilities import GoogleSerperAPIWrapper
+from typing import List
+from langchain.schema import Document
+from langchain_core.retrievers import BaseRetriever
+from pydantic import Field
+from langchain.prompts import PromptTemplate
+from langchain.chains import RetrievalQA
+import json
+
+import os
+import getpass
+from pprint import pprint
+import warnings
+from config import Upstage_API  # config.py에서 Upstage_API 키를 가져옴
+from openai import OpenAI
+from config import Google_API
+warnings.filterwarnings("ignore")
+
+# API 키 설정
+if "UPSTAGE_API_KEY" not in os.environ:
+    os.environ["UPSTAGE_API_KEY"] = Upstage_API
+
+# OpenAI client import 및 초기화
+client = OpenAI(
+    api_key=os.environ["UPSTAGE_API_KEY"], base_url="https://api.upstage.ai/v1/solar"
+)
+
+google_search = GoogleSerperAPIWrapper(serper_api_key=Google_API)
+
 
 def convert_time_period(period, hour):
     hour = int(hour)
@@ -45,14 +75,49 @@ def parse(input) :
     return name, '\n'.join(transformed_lines)
 
 # 상대방 정보를 특정할 수 있는 string 반환
-def make_persona(uploaded_file, special_info):
-    pass
+def make_persona(state):
+    uploaded_file = state.uploaded_file
+    special_info = state.special_info
+    name = state.name
+    chat_result = client.chat.completions.create(
+    model="solar-1-mini-chat",
+    messages=[
+        {"role": "system", "content": 
+        """
+        
+        """
+         },
+        {"role": "user", "content": f"""
+
+         """},
+    ],
+    )
+    response_text = chat_result.choices[0].message.content
+    return response_text;
 
 # return value : string
 # state keys() : ['uploaded_file', 'special_info', 'persona', 'name']
 # 상대방 정보 요약
 def summarey(state):
-    pass
+    uploaded_file = state.uploaded_file
+    special_info = state.special_info
+    persona = state.persona
+    name = state.name
+    chat_result = client.chat.completions.create(
+    model="solar-1-mini-chat",
+    messages=[
+        {"role": "system", "content": 
+        """
+        
+        """
+         },
+        {"role": "user", "content": f"""
+
+         """},
+    ],
+    )
+    response_text = chat_result.choices[0].message.content
+    return response_text;
 
 # return value : string
 # state.keys() : ['uploaded_file', 'special_info', 'persona', 'name']
@@ -64,10 +129,46 @@ def date_course(state):
 # state.keys() : ['uploaded_file', 'special_info', 'persona', 'name']
 # 현재 대화에 대한 평가
 def evaluate(state):
-    pass
+    uploaded_file = state.uploaded_file
+    special_info = state.special_info
+    persona = state.persona
+    name = state.name
+    chat_result = client.chat.completions.create(
+    model="solar-1-mini-chat",
+    messages=[
+        {"role": "system", "content": 
+        """
+        
+        """
+         },
+        {"role": "user", "content": f"""
+
+         """},
+    ],
+    )
+    response_text = chat_result.choices[0].message.content
+    return response_text;
 
 # return value : string
 # state.keys() : ['uploaded_file', 'special_info', 'persona', 'name']
 # 상대방에 맞춤 연애 팁 제공
 def tips(state):
-    pass
+    uploaded_file = state.uploaded_file
+    special_info = state.special_info
+    name = state.name
+    persona = state.persona
+    chat_result = client.chat.completions.create(
+    model="solar-1-mini-chat",
+    messages=[
+        {"role": "system", "content": 
+        """
+        
+        """
+         },
+        {"role": "user", "content": f"""
+
+         """},
+    ],
+    )
+    response_text = chat_result.choices[0].message.content
+    return response_text;
