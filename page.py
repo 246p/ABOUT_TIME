@@ -47,8 +47,11 @@ def input_page():
     if st.button("챗봇 생성"):
         if uploaded_file is not None and special_info:
             # 세션 상태에 정보 저장
-            chat_log= parse(uploaded_file)
+            name, chat_log= parse(uploaded_file)
+            print(name)
+            print(chat_log)
             st.session_state.persona=make_persona(chat_log, special_info)
+            st.session_state.name = name
             st.session_state.uploaded_file = chat_log
             st.session_state.special_info = special_info
             # 챗봇 페이지로 전환
