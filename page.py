@@ -44,12 +44,11 @@ def input_page():
     # 사용자 입력
     special_info = st.text_area("사용자가 알고 있는 특별한 정보")
 
-    chat_log= parse(uploaded_file)
-
     if st.button("챗봇 생성"):
         if uploaded_file is not None and special_info:
             # 세션 상태에 정보 저장
-            st.sesession_state.persona=make_persona(chat_log, special_info)
+            chat_log= parse(uploaded_file)
+            st.session_state.persona=make_persona(chat_log, special_info)
             st.session_state.uploaded_file = chat_log
             st.session_state.special_info = special_info
             # 챗봇 페이지로 전환
@@ -80,14 +79,6 @@ def chatbot_page():
 )
 
     st.title("챗봇과의 대화")
-
-    # 세션 상태에서 정보 가져오기
-    uploaded_file = st.session_state.get('uploaded_file')
-    special_info = st.session_state.get('special_info')
-
-    if uploaded_file is None or special_info is None:
-        st.error("챗봇 페이지로 이동하기 위해서는 입력 페이지에서 정보를 입력해야 합니다.")
-        return
 
     # 챗봇과의 대화창
     chat_input = st.text_input("대화 입력:")
